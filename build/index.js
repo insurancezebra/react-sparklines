@@ -433,7 +433,7 @@ var SparklinesCurve = function (_React$Component) {
                 color = _props.color,
                 style = _props.style,
                 _props$divisor = _props.divisor,
-                divisor = _props$divisor === undefined ? 0.25 : _props$divisor;
+                divisor = _props$divisor === undefined ? 0.5 : _props$divisor;
 
             var prev = void 0;
             var curve = function curve(p) {
@@ -467,25 +467,11 @@ var SparklinesCurve = function (_React$Component) {
             var closePolyPoints = ["L" + points[points.length - 1].x, height, 0, height, 0, points[0].y];
             var fillPoints = linePoints.concat(closePolyPoints);
 
-            var lineStyle = {
-                stroke: color || style.stroke || 'slategray',
-                strokeWidth: style.strokeWidth || '1',
-                strokeLinejoin: style.strokeLinejoin || 'round',
-                strokeLinecap: style.strokeLinecap || 'round',
-                fill: 'none'
-            };
-            var fillStyle = {
-                stroke: style.stroke || 'none',
-                strokeWidth: '0',
-                fillOpacity: style.fillOpacity || '.1',
-                fill: style.fill || color || 'slategray'
-            };
-
             return _react2.default.createElement(
                 "g",
                 null,
-                _react2.default.createElement("path", { d: "M" + fillPoints.join(' '), style: fillStyle, className: "closed-path" }),
-                _react2.default.createElement("path", { d: "M" + linePoints.join(' '), style: lineStyle, className: "line" })
+                _react2.default.createElement("path", { d: "M" + fillPoints.join(' '), className: "closed-path" }),
+                _react2.default.createElement("path", { d: "M" + linePoints.join(' '), className: "line" })
             );
         }
     }]);

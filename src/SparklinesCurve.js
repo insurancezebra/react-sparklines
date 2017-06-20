@@ -12,7 +12,7 @@ export default class SparklinesCurve extends React.Component {
     };
 
     render() {
-        const { points, width, height, color, style, divisor = 0.25 } = this.props;
+        const { points, width, height, color, style, divisor = 0.5 } = this.props;
         let prev;
         const curve = (p) => {
             let res;
@@ -49,24 +49,10 @@ export default class SparklinesCurve extends React.Component {
         ];
         const fillPoints = linePoints.concat(closePolyPoints);
 
-        const lineStyle = {
-            stroke: color || style.stroke || 'slategray',
-            strokeWidth: style.strokeWidth || '1',
-            strokeLinejoin: style.strokeLinejoin || 'round',
-            strokeLinecap: style.strokeLinecap || 'round',
-            fill: 'none'
-        };
-        const fillStyle = {
-            stroke: style.stroke || 'none',
-            strokeWidth: '0',
-            fillOpacity: style.fillOpacity || '.1',
-            fill: style.fill || color || 'slategray'
-        };
-
         return (
             <g>
-                <path d={"M"+fillPoints.join(' ')} style={fillStyle} className="closed-path" />
-                <path d={"M"+linePoints.join(' ')} style={lineStyle} className="line" />
+                <path d={"M"+fillPoints.join(' ')} className="closed-path" />
+                <path d={"M"+linePoints.join(' ')} className="line" />
             </g>
         )
     }
