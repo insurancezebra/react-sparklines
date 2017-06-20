@@ -19,7 +19,6 @@ class Sparklines extends React.Component {
         svgWidth: React.PropTypes.number,
         svgHeight: React.PropTypes.number,
         preserveAspectRatio: React.PropTypes.string,
-        margin: React.PropTypes.number,
         style: React.PropTypes.object,
         min: React.PropTypes.number,
         max: React.PropTypes.number,
@@ -32,7 +31,6 @@ class Sparklines extends React.Component {
         height: 60,
         //Scale the graphic content of the given element non-uniformly if necessary such that the element's bounding box exactly matches the viewport rectangle.
         preserveAspectRatio: 'none', //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
-        margin: 2
     };
 
     constructor (props) {
@@ -44,11 +42,11 @@ class Sparklines extends React.Component {
     }
 
     render() {
-        const {  data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max, min} = this.props;
+        const {  data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, style, max, min} = this.props;
 
         if (data.length === 0) return null;
 
-        const points = dataToPoints({ data, limit, width, height, margin, max, min });
+        const points = dataToPoints({ data, limit, width, height, max, min });
 
         const svgOpts = { style: style, viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: preserveAspectRatio };
         if (svgWidth > 0) svgOpts.width = svgWidth;
@@ -58,7 +56,7 @@ class Sparklines extends React.Component {
             <svg {...svgOpts}>
                 {
                     React.Children.map(this.props.children, function(child) {
-                        return React.cloneElement(child, { data, points, width, height, margin });
+                        return React.cloneElement(child, { data, points, width, height });
                     })
                 }
             </svg>

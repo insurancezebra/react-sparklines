@@ -251,7 +251,6 @@ var Sparklines = function (_React$Component) {
                 svgWidth = _props.svgWidth,
                 svgHeight = _props.svgHeight,
                 preserveAspectRatio = _props.preserveAspectRatio,
-                margin = _props.margin,
                 style = _props.style,
                 max = _props.max,
                 min = _props.min;
@@ -259,7 +258,7 @@ var Sparklines = function (_React$Component) {
 
             if (data.length === 0) return null;
 
-            var points = (0, _dataToPoints2.default)({ data: data, limit: limit, width: width, height: height, margin: margin, max: max, min: min });
+            var points = (0, _dataToPoints2.default)({ data: data, limit: limit, width: width, height: height, max: max, min: min });
 
             var svgOpts = { style: style, viewBox: '0 0 ' + width + ' ' + height, preserveAspectRatio: preserveAspectRatio };
             if (svgWidth > 0) svgOpts.width = svgWidth;
@@ -269,7 +268,7 @@ var Sparklines = function (_React$Component) {
                 'svg',
                 svgOpts,
                 _react2.default.Children.map(this.props.children, function (child) {
-                    return _react2.default.cloneElement(child, { data: data, points: points, width: width, height: height, margin: margin });
+                    return _react2.default.cloneElement(child, { data: data, points: points, width: width, height: height });
                 })
             );
         }
@@ -286,7 +285,6 @@ Sparklines.propTypes = {
     svgWidth: _react2.default.PropTypes.number,
     svgHeight: _react2.default.PropTypes.number,
     preserveAspectRatio: _react2.default.PropTypes.string,
-    margin: _react2.default.PropTypes.number,
     style: _react2.default.PropTypes.object,
     min: _react2.default.PropTypes.number,
     max: _react2.default.PropTypes.number,
@@ -297,8 +295,7 @@ Sparklines.defaultProps = {
     width: 240,
     height: 60,
     //Scale the graphic content of the given element non-uniformly if necessary such that the element's bounding box exactly matches the viewport rectangle.
-    preserveAspectRatio: 'none', //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
-    margin: 2
+    preserveAspectRatio: 'none' //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
 };
 exports.Sparklines = Sparklines;
 exports.SparklinesLine = _SparklinesLine2.default;
@@ -487,8 +484,8 @@ var SparklinesCurve = function (_React$Component) {
             return _react2.default.createElement(
                 "g",
                 null,
-                _react2.default.createElement("path", { d: "M" + fillPoints.join(' '), style: fillStyle }),
-                _react2.default.createElement("path", { d: "M" + linePoints.join(' '), style: lineStyle })
+                _react2.default.createElement("path", { d: "M" + fillPoints.join(' '), style: fillStyle, className: "closed-path" }),
+                _react2.default.createElement("path", { d: "M" + linePoints.join(' '), style: lineStyle, className: "line" })
             );
         }
     }]);
