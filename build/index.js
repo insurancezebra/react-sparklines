@@ -467,7 +467,7 @@ var SparklinesCurve = function (_React$Component) {
             }).reduce(function (a, b) {
                 return a.concat(b);
             });
-            var closePolyPoints = ["L" + points[points.length - 1].x, height - margin, margin, height - margin, margin, points[0].y];
+            var closePolyPoints = ["L" + points[points.length - 1].x, height, 0, height, 0, points[0].y];
             var fillPoints = linePoints.concat(closePolyPoints);
 
             var lineStyle = {

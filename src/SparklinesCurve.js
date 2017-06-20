@@ -43,9 +43,9 @@ export default class SparklinesCurve extends React.Component {
             .map((p) => curve(p))
             .reduce((a, b) => a.concat(b));
         const closePolyPoints = [
-            "L" + points[points.length - 1].x, height - margin,
-            margin, height - margin,
-            margin, points[0].y
+            "L" + points[points.length - 1].x, height,
+            0, height,
+            0, points[0].y
         ];
         const fillPoints = linePoints.concat(closePolyPoints);
 
