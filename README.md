@@ -9,7 +9,7 @@ Live demos and docs: [borisyankov.github.io/react-sparklines/](http://borisyanko
 ## Install
 
 ```
-npm install react-sparklines --save
+npm install @thezebra/react-sparklines --save
 ```
 
 ## Run demo
@@ -45,7 +45,7 @@ width, height - dimensions of the generated sparkline in the SVG viewbox.  This 
 
 svgWidth, svgHeight - If you want absolute dimensions instead of a responsive component set these attributes.
 
-[preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) - default: 'none', set this to modify how the sparkline should scale 
+[preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) - default: 'none', set this to modify how the sparkline should scale
 
 margin - optional, offset the chart
 
